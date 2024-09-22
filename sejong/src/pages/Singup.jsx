@@ -1,10 +1,14 @@
-import React, { useState } from 'react';
-import axios from 'axios';
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { signup } from '../api/auth';
 
 function Signup() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
+  const [nickname, setNickname] = useState('');
+
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -13,8 +17,9 @@ function Signup() {
       return;
     }
     try {
-      const response = await axios.post('/api/signup', { email, password });
+      const response = await signup(nickname, email, password, confirmPassword)
       console.log('Signup Success:', response.data);
+      navigate('/login');
     } catch (error) {
       console.error('Signup Error:', error);
     }
@@ -48,6 +53,15 @@ function Signup() {
             type="password"
             value={confirmPassword}
             onChange={(e) => setConfirmPassword(e.target.value)}
+            required
+          />
+        </div>
+        <div>
+          <label>닉네임:</label>
+          <input
+            type="nickname"
+            value={nickname}
+            onChange={(e) => setNickname(e.target.value)}
             required
           />
         </div>
