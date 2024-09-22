@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import HeaderBar from '../component/Header'; // HeaderBar 컴포넌트 불러오기
 import { getQuestions, submitAnswers } from '../api/quiz'; // API 호출 함수 불러오기
 
