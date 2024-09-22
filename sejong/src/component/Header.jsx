@@ -38,12 +38,10 @@ const HeaderBar = () => {
     }
   };
 
-  // 닉네임 클릭 시 드롭다운 토글
   const toggleDropdown = () => {
     setIsDropdownOpen(!isDropdownOpen);
   };
 
-  // 외부 클릭 시 드롭다운 닫기
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
@@ -63,7 +61,6 @@ const HeaderBar = () => {
         <Link to="/mypage" style={styles.link}>My Page</Link>
         <Link to="/quiz" style={styles.link}>Quiz</Link>
 
-        {/* 닉네임 및 드롭다운 */}
         <div style={styles.profileContainer} ref={dropdownRef}>
           <span style={styles.nickname} onClick={toggleDropdown}>
             {nickname}
