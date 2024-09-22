@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
+import { login } from '../api/auth';
 
 function Login() {
   const [email, setEmail] = useState('');
@@ -11,8 +11,8 @@ function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('/api/login', { email, password });
-      console.log('Login Success:', response.data);
+      const response = await login(email, password);
+      console.log('Login Success:', response);
       navigate('/mypage');
     } catch (error) {
       console.error('Login Error:', error);
