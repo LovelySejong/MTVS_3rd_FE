@@ -3,7 +3,6 @@ import HeaderBar from '../component/Header'; // HeaderBar 컴포넌트 불러오
 import { getQuestions, submitAnswers } from '../api/quiz'; // API 호출 함수 불러오기
 
 const Quiz = () => {
-  const nickname = 'USER1'; // 로그인한 사용자의 닉네임 (실제로는 로그인 정보에서 가져옴)
   const [questions, setQuestions] = useState([]); // 서버에서 가져온 질문 목록, 초기값을 빈 배열로 설정
   const [answers, setAnswers] = useState({}); // 사용자가 선택한 답변 저장
   const [result, setResult] = useState(null); // 제출 후 결과 저장
@@ -60,7 +59,7 @@ const Quiz = () => {
 
   return (
     <>
-      <HeaderBar nickname={nickname} /> {/* HeaderBar 컴포넌트 추가 */}
+      <HeaderBar />
       <div>
         <h1>퀴즈 페이지</h1>
         {questions.map((question) => (
