@@ -14,7 +14,11 @@ const HeaderBar = () => {
   const getProfile = async () => {
     try {
       const response = await getUserProfile();
-      setNickname(response);
+      if (response?.success && response?.response?.nickname) {
+        setNickname(response.response.nickname); // 받아온 닉네임을 상태에 저장
+      } else {
+        console.error('Invalid profile response:', response);
+      }
     } catch (err) {
       console.error('Failed to fetch profile:', err);
     }
