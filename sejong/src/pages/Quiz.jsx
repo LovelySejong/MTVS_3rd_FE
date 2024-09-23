@@ -250,17 +250,6 @@ const Quiz = () => {
                 </div>
               ))}
             </div>
-            <div className="navigation-buttons">
-              {/* 이전 버튼은 첫 번째 문제에서 아예 렌더링하지 않음 */}
-              {currentQuestionIndex > 0 && (
-                <button onClick={handlePreviousQuestion}>
-                  Previous
-                </button>
-              )}
-              <button onClick={handleNextQuestion}>
-                {currentQuestionIndex < questions.length - 1 ? 'Next' : 'Submit'}
-              </button>
-            </div>
           </div>
         )}
       </div>
