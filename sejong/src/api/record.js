@@ -4,7 +4,7 @@ export const getQuizAverageScores = async () => {
     { part: '단어', averageScore: 85 },
     { part: '한자어', averageScore: 75 },
     { part: '띄어쓰기', averageScore: 90 },
-    { part: '문해력', averageScore: 80 }
+    { part: '문해력', averageScore: 70 }
   ];
 };
 
