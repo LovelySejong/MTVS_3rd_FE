@@ -1,0 +1,96 @@
+.mypage-container {
+    padding: 20px;
+    width: calc(100vw - 80px);
+    max-width: 100vw;
+    margin: 80px auto;
+    box-sizing: border-box;
+}
+
+.profile-section {
+    display: flex;
+    align-items: center;
+    margin: 0px 300px 20px;
+}
+
+.profile-picture {
+    width: 80px;
+    height: 80px;
+    margin-right: 20px;
+}
+
+.refresh-button {
+    margin-left: 20px;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.refresh-button:hover {
+    background-color: #0056b3;
+}
+
+/* stats-container에 flex 적용 */
+.stats-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+    margin-bottom: 40px;
+    width: 100%;
+    gap: 5%;
+}
+
+.chart-section{
+    width: 20%;
+    flex-shrink: 0;
+    box-sizing: border-box;
+}
+
+.score-section {
+    width: 33%;
+    flex-shrink: 0;
+    box-sizing: border-box;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+table,
+th,
+td {
+    border: 1px solid #ddd;
+}
+
+th,
+td {
+    padding: 10px;
+    text-align: left;
+}
+
+.escape-records {
+    margin: 30px 300px;
+    justify-content: center;
+}
+
+.escape-records h2 {
+    margin-left: 30px;
+}
+
+.cards {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.card {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    margin: 10px;
+    width: calc(33.333% - 20px);
+    box-sizing: border-box;
+}
