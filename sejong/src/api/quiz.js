@@ -32,5 +32,6 @@ export const submitAnswers = async (answers) => {
       },
     }
   );
+  console.log(response);
   return response.data;
 };

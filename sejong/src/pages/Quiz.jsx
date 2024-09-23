@@ -48,8 +48,10 @@ const Quiz = () => {
       ...prev,
       [currentQuestion.question_id]: selectedAnswer, // 선택한 답변을 상태에 저장
     }));
+  };
 
-    // Move to the next question or submit if it's the last one
+  // 다음 문제로 넘어가는 핸들러
+  const handleNextQuestion = () => {
     if (currentQuestionIndex < questions.length - 1) {
       setCurrentQuestionIndex((prevIndex) => prevIndex + 1);
     } else {
@@ -68,6 +70,7 @@ const Quiz = () => {
       const resultData = await submitAnswers(formattedAnswers); // 답안을 서버로 제출하고 결과 받음
       setResult(resultData); // 결과를 상태에 저장
     } catch (error) {
+      console.log(formattedAnswers);
       console.error('Error submitting answers:', error);
     }
   };
@@ -106,7 +109,7 @@ const Quiz = () => {
             <h2>결과</h2>
             <p>맞춘 문제: {result.correctCount}</p>
             <p>전체 문제 수: {result.totalQuestions}</p>
-            <p>점수: {result.score}%</p>
+            <p>점수: {result.score}</p>
           </div>
         ) : (
           <div key={currentQuestion.question_id} className="question-block">
@@ -130,7 +133,7 @@ const Quiz = () => {
                 </label>
               ))}
             </div>
-            <button className="next-button" onClick={handleAnswerChange}>
+            <button className="next-button" onClick={handleNextQuestion}>
               {currentQuestionIndex < questions.length - 1 ? '다음 문제' : '제출'}
             </button>
           </div>
