@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import HeaderBar from '../component/Header'; // HeaderBar 컴포넌트
+import HeaderBar from '../components/Header'; // HeaderBar 컴포넌트
 import { getQuestions, getQuestionsFromAI, submitAnswers } from '../api/quiz';
 
 const Quiz = () => {
