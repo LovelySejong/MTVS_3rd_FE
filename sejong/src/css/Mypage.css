@@ -1,15 +1,16 @@
 .mypage-container {
-    padding: 20px;
+    padding: 25px;
     width: calc(100vw - 80px);
     max-width: 100vw;
-    margin: 80px auto;
+    margin: 45px auto
     box-sizing: border-box;
+    background-color: white;
 }
 
 .profile-section {
     display: flex;
     align-items: center;
-    margin: 0px 300px 20px;
+    margin:80px 300px 20px;
 }
 
 .profile-picture {
@@ -26,6 +27,7 @@
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    width: 80px;
 }
 
 .refresh-button:hover {
@@ -50,7 +52,7 @@
 }
 
 .score-section {
-    width: 33%;
+    width: 25%;
     flex-shrink: 0;
     box-sizing: border-box;
 }
