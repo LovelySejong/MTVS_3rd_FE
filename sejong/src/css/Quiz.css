@@ -1,199 +1,90 @@
-/* 전체 body 스타일 */
 body {
     display: flex;
-    flex-direction: column;
-    align-items: center;
     justify-content: center;
-    min-height: 100vh;
+    align-items: center;
+    height: 100vh;
     background-color: #f9f9f9;
     font-family: 'Noto Sans KR', sans-serif;
 }
 
-/* 퀴즈 제목 스타일 */
-h1 {
-    font-size: 2.5rem;
-    color: #333;
-    margin: 100px auto 20px;
-    text-align: center;
-    font-weight: bold;
-    font-family: 'Noto Sans KR', sans-serif;
-}
-
-/* 퀴즈 선택 스타일 */
-.quiz-selection {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    margin-top: 50px;
-    width: 80%;
-}
-
-.quiz-type {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    cursor: pointer;
-    transition: transform 0.2s ease;
-    margin: 20px;
-    background-color: #ffffff;
-    padding: 20px;
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-}
-
-.quiz-type:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-}
-
-.quiz-image {
-    width: 100px;
-    height: 100px;
-    margin-bottom: 10px;
-}
-
-.quiz-type p {
-    font-size: 16px;
-    font-weight: bold;
-    text-align: center;
-    color: #333;
-}
-
-/* 각 질문과 문제 블록 */
-.question-block {
-    width: 100%;
-    max-width: 600px;
-    background-color: #fff;
+.quiz-container {
+    background-color: white;
     padding: 30px;
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    margin-bottom: 30px;
-    text-align: left;
-    position: relative;
+    border-radius: 8px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    width: 400px;
+    text-align: center;
 }
 
-/* 질문 텍스트 */
-.question-block p {
-    font-size: 18px;
-    font-weight: 500;
+.quiz-title {
+    font-size: 24px;
+    font-weight: bold;
     margin-bottom: 20px;
     color: #333;
 }
 
-/* 선택지 스타일 */
+.question-block {
+    margin-bottom: 30px;
+}
+
+.question-text {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-align: left;
+}
+
 .options {
     display: flex;
     flex-direction: column;
-    margin-top: 30px;
-}
-
-/* 라디오 버튼과 텍스트 스타일 */
-.options label {
-    margin-bottom: 15px;
-    display: flex;
-    align-items: center;
-    font-size: 18px;
-    color: #555;
-    cursor: pointer;
-    background-color: #f7f9fc;
-    padding: 10px 20px;
-    border-radius: 8px;
-    transition: background-color 0.3s;
-    border: 1px solid #e3e6ec;
-}
-
-/* 라디오 버튼 간격 조정 */
-.options input[type="radio"] {
-    margin-right: 15px;
-}
-
-/* 선택지 hover 시 스타일 변화 */
-.options label:hover {
-    background-color: #eaf3ff;
-    border: 1px solid #bdd9ff;
+    gap: 10px;
 }
 
 .option {
-    margin-bottom: 15px;
-    padding: 10px 20px;
-    background-color: #f7f9fc;
-    border: 1px solid #e3e6ec;
-    border-radius: 8px;
-    font-size: 18px;
-    color: #555;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
     cursor: pointer;
+    background-color: white;
     transition: background-color 0.3s;
 }
 
 .option:hover {
-    background-color: #eaf3ff;
-    border-color: #bdd9ff;
+    background-color: #f0f0f0;
 }
 
-/* 버튼 스타일 */
-button {
-    width: 80px;
-    max-width: 220px;
-    padding: 12px 20px;
-    font-size: 1rem;
-    font-weight: bold;
+.option.selected {
+    border-color: #5c6bc0;
+    background-color: #eef3ff;
+}
+
+.next-button {
+    width: 100%;
+    padding: 10px;
     background-color: #5c6bc0;
-    color: black;
+    color: white;
     border: none;
-    border-radius: 6px;
+    border-radius: 5px;
     cursor: pointer;
-    transition: background-color 0.3s;
     margin-top: 20px;
-    text-align: center;
+    transition: background-color 0.3s;
 }
 
-/* 버튼 hover 시 스타일 */
-button:hover {
-    color: white;
+.next-button:hover {
     background-color: #3949ab;
 }
 
-/* 버튼 disabled 시 스타일 */
-button:disabled {
-    background-color: #ccc;
-    cursor: not-allowed;
-}
-
-/* 결과 블록 스타일 */
-.result-block {
+.progress-bar {
     width: 100%;
-    max-width: 600px;
-    background-color: #f1f9f1;
-    padding: 30px;
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    text-align: center;
-    margin-bottom: 30px;
+    height: 5px;
+    background-color: #ddd;
+    border-radius: 3px;
+    overflow: hidden;
+    margin-top: 20px;
 }
 
-/* 결과 블록 텍스트 스타일 */
-.result-block h2 {
-    font-size: 2rem;
-    margin-bottom: 20px;
-    color: #333;
-}
-
-.result-block p {
-    font-size: 1.25rem;
-    margin-bottom: 10px;
-    color: #333;
-    font-weight: bold;
-}
-
-/* 네비게이션 버튼 스타일 */
-.navigation-buttons {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 30px;
-}
-
-.navigation-buttons button {
-    max-width: 120px;
-    flex: 1;
-    margin: 0 10px;
+.progress {
+    height: 100%;
+    background-color: #5c6bc0;
+    transition: width 0.3s;
 }
