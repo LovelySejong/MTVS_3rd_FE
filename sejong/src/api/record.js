@@ -1,11 +1,28 @@
+import axios from "axios";
+
+const BASE_URL = import.meta.env.VITE_BASE_URL;
+
+const getToken = () => {
+  return localStorage.getItem('token');
+};
+
 // 퀴즈 평균 점수 가져오기
 export const getQuizAverageScores = async () => {
-  return [
-    { part: '단어', averageScore: 85 },
-    { part: '한자어', averageScore: 75 },
-    { part: '띄어쓰기', averageScore: 90 },
-    { part: '문해력', averageScore: 70 }
-  ];
+  const token = getToken();
+  try {
+    const response = await axios.get(`${BASE_URL}/recommend/avgscores`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      }
+    });
+    return response.data.map((score) => ({
+      ...score,
+      averageScore: parseFloat(score.averageScore).toFixed(2),
+    }));
+  } catch (error) {
+    console.error('Failed to fetch quiz average scores:', error);
+    return [];
+  }
 };
 
 // 사용자 방탈출 평균 시간 가져오기 (초 단위로 반환)
