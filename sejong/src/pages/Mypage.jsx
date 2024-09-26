@@ -5,7 +5,6 @@ import {
   getUserEscapeTime,
   getQuizAverageScores,
   getEscapeRoomRecords,
-  getTestRecord,
 } from "../api/record";
 import HeaderBar from "../components/Header";
 import { getUserProfile } from "../api/user";
@@ -22,6 +21,22 @@ const formatTime = (seconds) => {
   return `${minutes}분 ${
     remainingSeconds < 10 ? "0" : ""
   }${remainingSeconds}초`;
+};
+
+// 방 이름 변환하는 함수
+const formatRoomName = (roomNumber) => {
+  switch (roomNumber) {
+    case 1:
+      return "단어의 방";
+    case 2:
+      return "한자어의 방";
+    case 3:
+      return "띄어쓰기의 방";
+    case 4:
+      return "문해력의 방";
+    default:
+      return null;
+  }
 };
 
 const Mypage = () => {
@@ -58,9 +73,6 @@ const Mypage = () => {
 
       const recordsData = await getEscapeRoomRecords();
       setEscapeRecords(recordsData);
-
-      const testData = await getTestRecord();
-      console.log("testData: ", testData);
 
       await getProfile(); // 닉네임 가져오기
     } catch (err) {
@@ -164,12 +176,18 @@ const Mypage = () => {
               escapeRecords.map((record, index) => (
                 <div className="card" key={index}>
                   <h3>게임 ID: {record.gameId}</h3>
-                  <p>함께 한 사람: {record.partner}</p>
-                  {record.rooms.map((room, roomIndex) => (
-                    <p key={roomIndex}>
-                      {room.roomName}: {formatTime(room.escapeTime)}
-                    </p>
-                  ))}
+                  <p>함께 한 사람: {record.partnerNickname}</p>
+                  {[1, 2, 3, 4].map((roomNumber) => {
+                    const room = record.playLogs.find(
+                      (log) => log.roomNumber === roomNumber
+                    );
+                    return (
+                      <p key={roomNumber}>
+                        {formatRoomName(roomNumber)}:{" "}
+                        {room ? room.duration : "기록 없음"}
+                      </p>
+                    );
+                  })}
                 </div>
               ))
             ) : (
