@@ -140,7 +140,7 @@ const Mypage = () => {
                     {quizScores.length > 0 ? (
                       quizScores.map((score, index) => (
                         <tr key={index}>
-                          <td>{score.part}</td>
+                          <td>{score.questionType}</td>
                           <td>{score.averageScore}</td>
                         </tr>
                       ))
