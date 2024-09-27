@@ -21,6 +21,10 @@ function Login() {
     }
   };
 
+  const handleSignUp = () => {
+    navigate('/signup'); // 회원가입 페이지로 이동
+  };
+
   return (
     <div style={{ ...styles.loginContainer, backgroundImage: `url(${BackImg})` }}>
       <div style={styles.content}>
@@ -50,6 +54,9 @@ function Login() {
               입장
             </button>
           </form>
+          <div style={styles.signUpLinkWrapper}>
+            <a href="/signup" style={styles.signUpLink}>회원가입</a>
+          </div>
         </div>
       </div>
     </div>
@@ -62,34 +69,34 @@ const styles = {
     justifyContent: 'center',
     alignItems: 'center',
     height: '100vh',
-    width: '100vw', // 화면 전체 너비
-    backgroundColor: '#6bbde0', // 기본 배경색 (배경 이미지 로드 실패 시 표시)
+    width: '100vw',
+    backgroundColor: '#6bbde0',
     backgroundRepeat: 'no-repeat',
     backgroundPosition: 'center',
-    backgroundSize: 'contain', // 이미지가 잘리지 않도록 설정
+    backgroundSize: 'contain',
   },
   content: {
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: 'rgba(255, 255, 255, 0.8)', // 반투명 흰색 배경
+    backgroundColor: 'rgba(255, 255, 255, 0.8)',
     padding: '40px',
     borderRadius: '15px',
-    maxWidth: '400px', // 최대 너비
-    width: '100%', // 가로 크기를 부모 요소에 맞춤
-    boxSizing: 'border-box', // padding 포함하여 너비 계산
-    margin: '0 20px', // 좌우 여백 추가
+    maxWidth: '400px',
+    width: '100%',
+    boxSizing: 'border-box',
+    margin: '0 20px',
   },
   form: {
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-    width: '100%', // 폼의 너비를 부모 요소에 맞춤
+    width: '100%',
   },
   inputWrapper: {
     marginBottom: '15px',
-    width: '100%', // 입력 필드가 부모 요소에 맞춰짐
+    width: '100%',
   },
   input: {
     width: '100%',
@@ -99,9 +106,10 @@ const styles = {
     border: '1px solid #ccc',
     fontSize: '16px',
     textAlign: 'center',
+    boxSizing: 'border-box', // 입력 필드 크기 계산에 패딩 포함
   },
   loginButton: {
-    width: '100%', // 버튼의 너비를 부모 요소에 맞춤
+    width: '100%', // 버튼의 너비를 입력 필드와 동일하게
     height: '50px',
     borderRadius: '25px',
     backgroundColor: 'black',
@@ -109,6 +117,19 @@ const styles = {
     fontSize: '18px',
     cursor: 'pointer',
     marginTop: '20px',
+    boxSizing: 'border-box', // 버튼 크기 계산에 패딩 포함
+  },
+  signUpLinkWrapper: {
+    display: 'flex',
+    justifyContent: 'flex-end',
+    width: '100%',
+    marginTop: '10px',
+  },
+  signUpLink: {
+    color: '#007bff',
+    textDecoration: 'none',
+    fontSize: '14px',
+    cursor: 'pointer',
   },
 };
 
