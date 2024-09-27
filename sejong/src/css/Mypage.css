@@ -44,6 +44,7 @@
   margin-bottom: 40px;
   width: 100%;
   gap: 5%;
+  color: #000;
 }
 
 .chart-section {
@@ -61,6 +62,7 @@
 table {
   width: 100%;
   border-collapse: collapse;
+  color: #000;
 }
 
 table,
@@ -96,4 +98,5 @@ td {
   margin: 10px;
   width: calc(33.333% - 20px);
   box-sizing: border-box;
+  color: #000;
 }
