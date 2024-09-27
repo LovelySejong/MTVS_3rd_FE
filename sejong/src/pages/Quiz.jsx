@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom'; // useNavigate를 import
 import HeaderBar from '../components/Header'; // HeaderBar 컴포넌트
 import { getQuestions, submitAnswers } from '../api/quiz';
-import '../css/Quiz.css'
+import '../css/Quiz.css';
 
 const Quiz = () => {
   const [questions, setQuestions] = useState([]); // 문제 목록
@@ -9,6 +10,7 @@ const Quiz = () => {
   const [answers, setAnswers] = useState({}); // 사용자가 선택한 답변 저장
   const [result, setResult] = useState(null); // 채점 결과
   const [loading, setLoading] = useState(true); // 로딩 상태
+  const navigate = useNavigate(); // useNavigate 훅 선언
 
   // 문제 가져오는 함수
   useEffect(() => {
@@ -110,6 +112,12 @@ const Quiz = () => {
             <p>맞춘 문제: {result.correctCount}</p>
             <p>전체 문제 수: {result.totalQuestions}</p>
             <p>점수: {result.score}</p>
+            <button
+              className="mypage-button" // 마이페이지로 이동 버튼 추가
+              onClick={() => navigate('/mypage')}
+            >
+              마이페이지로 이동
+            </button>
           </div>
         ) : (
           <div key={currentQuestion.question_id} className="question-block">

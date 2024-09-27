@@ -6,16 +6,15 @@ import { logout } from '../api/auth';
 
 const HeaderBar = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  const [nickname, setNickname] = useState(''); // 닉네임 상태 추가
+  const [nickname, setNickname] = useState(''); 
   const navigate = useNavigate();
   const dropdownRef = useRef(null);
 
-  // 닉네임을 받아오는 API 호출
   const getProfile = async () => {
     try {
       const response = await getUserProfile();
       if (response?.success && response?.response?.nickname) {
-        setNickname(response.response.nickname); // 받아온 닉네임을 상태에 저장
+        setNickname(response.response.nickname); 
       } else {
         console.error('Invalid profile response:', response);
       }
@@ -25,7 +24,7 @@ const HeaderBar = () => {
   };
 
   useEffect(() => {
-    getProfile(); // 컴포넌트 마운트 시 프로필 정보 불러오기
+    getProfile(); 
   }, []);
 
   const handleLogout = async () => {
@@ -79,67 +78,78 @@ const HeaderBar = () => {
 };
 
 const styles = {
-    header: {
-      backgroundColor: '#f8f9fa',
-      padding: '10px 0',
-      borderBottom: '1px solid #ddd',
-      display: 'flex',
-      justifyContent: 'space-between',
-      alignItems: 'center',
-      width: '100%',
-      position: 'fixed',
-      top: 0,
-      left: 0,
-      zIndex: 1000,
-    },
-    nav: {
-      display: 'flex',
-      justifyContent: 'space-between',
-      alignItems: 'center',
-      width: '100%',
-      padding: '0 20px',
-    },
-    link: {
-      textDecoration: 'none',
-      color: '#333',
-      fontSize: '16px',
-      marginRight: '20px',
-    },
-    profileContainer: {
-      position: 'relative',
-      display: 'inline-block',
-      marginLeft: 'auto',
-    },
-    nickname: {
-      cursor: 'pointer',
-      fontSize: '16px',
-      color: '#007bff',
-      padding: '10px 20px', // 닉네임에 패딩 추가
-      backgroundColor: '#f8f9fa', // 배경색을 드롭다운과 일치시킴
-      borderRadius: '4px', // 테두리 모양 일관성 유지
-    },
-    dropdown: {
-      position: 'absolute',
-      top: '40px', // 닉네임 아래에 정확히 배치
-      right: '0',
-      backgroundColor: '#fff',
-      border: '1px solid #ddd',
-      borderRadius: '4px',
-      boxShadow: '0 2px 10px rgba(0, 0, 0, 0.1)',
-      zIndex: 1,
-      width: '100%', // 드롭다운 크기를 닉네임과 동일하게
-    },
-    logoutButton: {
-      width: '100%',
-      background: 'none',
-      border: 'none',
-      cursor: 'pointer',
-      textAlign: 'center',
-      color: '#007bff',
-      fontSize: '16px',
-      padding: '10px 0', // 패딩을 닉네임과 동일하게
-      whiteSpace: 'nowrap', // 텍스트 줄바꿈 방지
-    },
-  };
+  header: {
+    backgroundColor: '#2D4E93',
+    padding: '15px 0',
+    borderBottom: '2px solid #4e5d6c',
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    width: '100%',
+    position: 'fixed',
+    top: 0,
+    left: 0,
+    zIndex: 1000,
+  },
+  nav: {
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    width: '100%',
+    padding: '0 30px',
+  },
+  link: {
+    textDecoration: 'none',
+    color: '#f1f1f1',
+    fontSize: '19.2px', // 기존보다 1.2배
+    marginRight: '30px',
+    fontWeight: '500', // 굵게 해서 더 돋보이게
+    padding: '10px 15px',
+    transition: 'color 0.3s ease',
+  },
+  linkHover: {
+    color: '#ffffff', // 호버 시 효과를 추가할 수 있음
+  },
+  profileContainer: {
+    position: 'relative',
+    display: 'inline-block',
+    marginLeft: 'auto',
+  },
+  nickname: {
+    cursor: 'pointer',
+    fontSize: '19.2px', // 기존보다 1.2배
+    color: '#ffffff',
+    padding: '12px 25px',
+    borderRadius: '4px',
+    transition: 'background-color 0.3s ease',
+  },
+  dropdown: {
+    position: 'absolute',
+    top: '50px', 
+    right: '0',
+    backgroundColor: '#ffffff',
+    border: '1px solid #ddd',
+    borderRadius: '4px',
+    boxShadow: '0 2px 10px rgba(0, 0, 0, 0.15)',
+    zIndex: 1,
+    width: '100%',
+  },
+  logoutButton: {
+    width: '100%',
+    background: '#dc3545',
+    border: 'none',
+    color: '#ffffff',
+    cursor: 'pointer',
+    textAlign: 'center',
+    fontSize: '19.2px', // 기존보다 1.2배
+    padding: '10px 0',
+    borderRadius: '4px',
+    whiteSpace: 'nowrap',
+    transition: 'background-color 0.3s ease',
+  },
+  logoutButtonHover: {
+    backgroundColor: '#c82333',
+  },
+};
 
 export default HeaderBar;
