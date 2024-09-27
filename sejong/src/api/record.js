@@ -11,7 +11,7 @@ const BASE_URL = import.meta.env.VITE_BASE_URL;
 export const getQuizAverageScores = async () => {
   const token = getToken();
   try {
-    const response = await axios.get(`${BASE_URL}/recommend/avgscores`, {
+    const response = await axios.get(`${BASE_URL}/quiz/avgscores`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -26,14 +26,20 @@ export const getQuizAverageScores = async () => {
   }
 };
 
-// 사용자 방탈출 평균 시간 가져오기 (초 단위로 반환)
+// 방탈출 평균 시간 가져오기 API
 export const getUserEscapeTime = async () => {
-  return {
-    roomNumber1: 150,
-    roomNumber2: 160,
-    roomNumber3: 155,
-    roomNumber4: 175,
-  };
+  const token = getToken();
+  try {
+    const response = await axios.get(`${BASE_URL}/log/avgscores`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    return response.data;
+  } catch (error) {
+    console.error('Failed to fetch user escape times:', error);
+    return [];
+  }
 };
 
 // 방탈출 기록 가져오기 (초 단위)

@@ -89,23 +89,25 @@ const Mypage = () => {
 
   // 원형 차트 데이터 (방탈출 평균 시간)
   const doughnutData = averageTime
-    ? {
-        labels: ["단어의 방", "한자어의 방", "띄어쓰기의 방", "문해력의 방"], // 방 이름으로 변경
-        datasets: [
-          {
-            label: "Escape Time (sec)",
-            data: [
-              averageTime.roomNumber1,
-              averageTime.roomNumber2,
-              averageTime.roomNumber3,
-              averageTime.roomNumber4,
-            ], // API로부터 받은 데이터 사용
-            backgroundColor: ["#ffcd56", "#ff6384", "#36a2eb", "#fd6b19"],
-            hoverOffset: 4,
-          },
-        ],
-      }
-    : null; // 데이터가 없으면 null 처리
+  ? {
+      labels: ["단어의 방", "한자어의 방", "띄어쓰기의 방", "문해력의 방"], // 방 이름으로 변경
+      datasets: [
+        {
+          label: "Escape Time (sec)",
+          data: [
+            // roomNumber 1, 2, 3, 4만 매핑하여 사용
+            ...[1, 2, 3, 4].map((roomNumber) => {
+              const roomData = averageTime.find((room) => room.roomNumber === roomNumber);
+              return roomData ? roomData.averageScore : 0; // roomNumber가 있을 경우 averageScore 반환, 없으면 0
+            }),
+          ],
+          backgroundColor: ["#ffcd56", "#ff6384", "#36a2eb", "#fd6b19"],
+          hoverOffset: 4,
+        },
+      ],
+    }
+  : null; // 데이터가 없으면 null 처리
+
 
   return (
     <>
